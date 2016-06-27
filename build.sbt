@@ -6,6 +6,9 @@ lazy val commonSettings = Seq(
 lazy val root = (project in file(".")).
   aggregate(test, core).
   settings(
+    commonSettings: _*
+  ).
+  settings(
     name := "sbt-assembly-multi-module-test",
     version := "1.0"
   )
@@ -21,4 +24,4 @@ lazy val core = project.in(file("core")).settings(
     commonSettings: _*
   ).settings(
     version := "1.0"
-  ).dependsOn(test % "test->compile;runtime->compile")
+  ).dependsOn(test % "test->compile")
